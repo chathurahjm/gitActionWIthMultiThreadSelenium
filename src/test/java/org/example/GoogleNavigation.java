@@ -41,10 +41,10 @@ public class GoogleNavigation {
                         // Navigate to Google
                         driver.get("https://gplus.lk/");
 
-                        Thread.sleep(8000); // Sleep
-                        WebElement element = driver.findElement(By.xpath("(//*[@class='yt-simple-endpoint style-scope ytd-playlist-thumbnail'])[4]"));
+                        // Thread.sleep(8000); // Sleep
+                        // WebElement element = driver.findElement(By.xpath("(//*[@class='yt-simple-endpoint style-scope ytd-playlist-thumbnail'])[4]"));
 
-                        // Simulate pressing the space button on the element
+                        // // Simulate pressing the space button on the element
                         element.click();
 
                         // Sleep for 15 minutes
