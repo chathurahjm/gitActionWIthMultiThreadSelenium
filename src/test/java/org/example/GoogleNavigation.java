@@ -25,11 +25,9 @@ public class GoogleNavigation {
            ExecutorService executorService = Executors.newFixedThreadPool(15);
 
         // Submit tasks to the executor
-        for (int i = 0; i < 15; i++) {
-            executorService.submit(() -> {
-                try {
+
                     long startTime = System.currentTimeMillis();
-                    while (System.currentTimeMillis() - startTime < TimeUnit.HOURS.toMillis(17)) {
+                    while (System.currentTimeMillis() - startTime < TimeUnit.HOURS.toMillis(20)) {
                         // Set ChromeDriver path
                         System.setProperty("webdriver.chrome.driver", "/usr/local/bin/chromedriver");
 
@@ -41,7 +39,7 @@ public class GoogleNavigation {
                         WebDriver driver = new ChromeDriver(chromeOptions);
 
                         // Navigate to Google
-                        driver.get("https://www.youtube.com/@day2day/playlists");
+                        driver.get("https://gplus.lk/");
 
                         Thread.sleep(8000); // Sleep
                         WebElement element = driver.findElement(By.xpath("(//*[@class='yt-simple-endpoint style-scope ytd-playlist-thumbnail'])[4]"));
@@ -50,7 +48,7 @@ public class GoogleNavigation {
                         element.click();
 
                         // Sleep for 15 minutes
-                        Thread.sleep(TimeUnit.MINUTES.toMillis(15));
+                        Thread.sleep(TimeUnit.MINUTES.toMillis(2));
 
                          driver.get("https://gplus.lk/");
                          Thread.sleep(8000); // Sleep
@@ -60,8 +58,7 @@ public class GoogleNavigation {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-            });
-        }
+        
 
         // Shutdown the executor once all tasks are completed
         executorService.shutdown();
