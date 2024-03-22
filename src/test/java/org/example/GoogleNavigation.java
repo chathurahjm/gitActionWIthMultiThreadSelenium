@@ -8,66 +8,60 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.By;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
+
 
 @Test
 public class GoogleNavigation {
 
     protected WebDriver driver;
     
-    // @Test
-    // public void testActions() {
-    //     System.setProperty("webdriver.chrome.driver", "/usr/local/bin/chromedriver");
-    //     //WebDriverManager.chromedriver().setup();
-
-    //      ChromeOptions chromeOptions = new ChromeOptions();
-    //     chromeOptions.addArguments("--headless");
-
-    //     // Set headless mode
-    //    // chromeOptions.addArguments("--disable-web-security");
-
-    //     // Create a WebDriver instance (ChromeDriver)
-    //      driver = new ChromeDriver(chromeOptions);
-
-    //     // Navigate to Google
-    //     driver.get("https://www.google.com");
-
-    //     // Close the browser
-    //     driver.quit();
-        
-    // }
+   
     @Test
     public void testActions()throws InterruptedException {
 
-        long startTime = System.currentTimeMillis();
+           ExecutorService executorService = Executors.newFixedThreadPool(15);
 
-         while (System.currentTimeMillis() - startTime < TimeUnit.HOURS.toMillis(17)) {
+        // Submit tasks to the executor
+        for (int i = 0; i < 15; i++) {
+            executorService.submit(() -> {
+                try {
+                    long startTime = System.currentTimeMillis();
+                    while (System.currentTimeMillis() - startTime < TimeUnit.HOURS.toMillis(17)) {
+                        // Set ChromeDriver path
+                        System.setProperty("webdriver.chrome.driver", "/usr/local/bin/chromedriver");
 
-       
-        System.setProperty("webdriver.chrome.driver", "/usr/local/bin/chromedriver");
-        //WebDriverManager.chromedriver().setup();
+                        // Configure ChromeOptions
+                        ChromeOptions chromeOptions = new ChromeOptions();
+                        chromeOptions.addArguments("--headless");
 
-         ChromeOptions chromeOptions = new ChromeOptions();
-        chromeOptions.addArguments("--headless");
+                        // Create a WebDriver instance (ChromeDriver)
+                        WebDriver driver = new ChromeDriver(chromeOptions);
 
-        // Set headless mode
-        //chromeOptions.addArguments("--disable-web-security");
+                        // Navigate to Google
+                        driver.get("https://www.youtube.com/@day2day/playlists");
 
-        // Create a WebDriver instance (ChromeDriver)
-         driver = new ChromeDriver(chromeOptions);
+                        Thread.sleep(8000); // Sleep
+                        WebElement element = driver.findElement(By.xpath("(//*[@class='yt-simple-endpoint style-scope ytd-playlist-thumbnail'])[4]"));
 
-        // Navigate to Google
-           driver.get("https://www.youtube.com/@day2day/playlists");
+                        // Simulate pressing the space button on the element
+                        element.click();
 
-            Thread.sleep(8000); // Sleep
-            WebElement element = driver.findElement(By.xpath("(//*[@class='yt-simple-endpoint style-scope ytd-playlist-thumbnail'])[4]"));
+                        // Sleep for 15 minutes
+                        Thread.sleep(TimeUnit.MINUTES.toMillis(15));
 
-            // Simulate pressing the space button on the element
-            element.click();
-            Thread.sleep(900000); // Sleep for 1 second
-            Thread.sleep(900000); // Sleep for 1 second
+                        driver.quit();
+                    }
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            });
+        }
 
-
-            driver.quit();
+        // Shutdown the executor once all tasks are completed
+        executorService.shutdown();
         
     }
     }
