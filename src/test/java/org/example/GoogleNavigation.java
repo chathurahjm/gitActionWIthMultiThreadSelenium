@@ -45,7 +45,7 @@ public class GoogleNavigation {
                         // WebElement element = driver.findElement(By.xpath("(//*[@class='yt-simple-endpoint style-scope ytd-playlist-thumbnail'])[4]"));
 
                         // // Simulate pressing the space button on the element
-                        element.click();
+                        // element.click();
 
                         // Sleep for 15 minutes
                         Thread.sleep(TimeUnit.MINUTES.toMillis(2));
