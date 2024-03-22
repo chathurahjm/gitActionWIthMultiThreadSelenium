@@ -55,7 +55,7 @@ public class GoogleNavigation {
 
                         driver.quit();
                     }
-                } catch (InterruptedException e) {
+                 catch (InterruptedException e) {
                     e.printStackTrace();
                 }
         
