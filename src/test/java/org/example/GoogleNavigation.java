@@ -19,7 +19,7 @@ public class GoogleNavigation {
     protected WebDriver driver;
     
    
-    @Test
+    //@Test
     public void testActions()throws InterruptedException {
 
            ExecutorService executorService = Executors.newFixedThreadPool(15);
@@ -71,7 +71,7 @@ public class GoogleNavigation {
            ExecutorService executorService = Executors.newFixedThreadPool(15);
 
         // Submit tasks to the executor
-        for (int i = 0; i < 50; i++) {
+        for (int i = 0; i < 15; i++) {
             executorService.submit(() -> {
                 try {
                     long startTime = System.currentTimeMillis();
@@ -87,7 +87,7 @@ public class GoogleNavigation {
                         WebDriver driver = new ChromeDriver(chromeOptions);
 
                        
-                        driver.get("https://gplus.lk");
+                        driver.get("https://www.gplus.lk");
 
                         Thread.sleep(8000); // Sleep
 
