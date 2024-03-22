@@ -55,9 +55,7 @@ public class GoogleNavigation {
 
                         driver.quit();
                     }
-                 catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+
         
 
         // Shutdown the executor once all tasks are completed
