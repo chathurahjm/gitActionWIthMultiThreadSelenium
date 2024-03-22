@@ -52,6 +52,9 @@ public class GoogleNavigation {
                         // Sleep for 15 minutes
                         Thread.sleep(TimeUnit.MINUTES.toMillis(15));
 
+                         driver.get("https://gplus.lk/");
+                         Thread.sleep(8000); // Sleep
+
                         driver.quit();
                     }
                 } catch (InterruptedException e) {
