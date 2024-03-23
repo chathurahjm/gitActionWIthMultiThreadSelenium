@@ -33,15 +33,17 @@ public class GoogleNavigation {
 
                         // Configure ChromeOptions
                         ChromeOptions chromeOptions = new ChromeOptions();
+                        chromeOptions.addArguments("--user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36");
+
                         chromeOptions.addArguments("--headless");
 
                         // Create a WebDriver instance (ChromeDriver)
                         WebDriver driver = new ChromeDriver(chromeOptions);
 
                         // Navigate to Google
-                        driver.get("https://gplus.lk/");
+                        driver.get("https://sqaplus.blogspot.com/");
 
-                        // Thread.sleep(8000); // Sleep
+                         Thread.sleep(8000); // Sleep
                         // WebElement element = driver.findElement(By.xpath("(//*[@class='yt-simple-endpoint style-scope ytd-playlist-thumbnail'])[4]"));
 
                         // // Simulate pressing the space button on the element
@@ -50,7 +52,7 @@ public class GoogleNavigation {
                         // Sleep for 15 minutes
                         Thread.sleep(TimeUnit.MINUTES.toMillis(2));
 
-                         driver.get("https://gplus.lk/");
+                         driver.get("https://sqaplus.blogspot.com/");
                          Thread.sleep(8000); // Sleep
 
                         driver.quit();
